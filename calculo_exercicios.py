@@ -1,4 +1,3 @@
-# Importa as bibliotecas necessárias para cálculo simbólico
 import sympy as sp
 from sympy.abc import x, h
 from sympy.parsing.sympy_parser import parse_expr, standard_transformations, implicit_multiplication_application
@@ -15,7 +14,6 @@ def resolver_inequacao(expr, rel):
         Um conjunto de solução.
     """
     try:
-        # Cria a inequação usando o método do SymPy
         if rel == '<':
             sol = sp.solveset(expr < 0, x, domain=sp.Reals)
         elif rel == '>':
@@ -45,10 +43,8 @@ def estudar_sinal(expr):
         sol_neg = sp.solveset(expr < 0, x, domain=sp.Reals)
         sol_zero = sp.solveset(sp.Eq(expr, 0), x, domain=sp.Reals)
         
-        # Encontra os pontos onde a expressão é indefinida (denominador = 0)
         pontos_indef = sp.singularities(expr, x)
         
-        # Descreve o estudo de sinal
         resultado = f"Estudo do sinal da expressão: {sp.sstr(expr)}\n"
         resultado += f"A expressão é POSITIVA para x ∈ {sol_pos}\n"
         resultado += f"A expressão é NEGATIVA para x ∈ {sol_neg}\n"
